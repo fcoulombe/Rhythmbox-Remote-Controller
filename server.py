@@ -44,6 +44,15 @@ while 1:
         ret = execCommand("--play-pause")
         client.send(ret)
 
+    import re
+    r = re.compile('[ \t\n\r:]+')
+    packet = r.split(data)
+    if packet[0] == "Volume":
+        print "exec play"
+        ret = execCommand("--set-volume " + packet[1])
+        client.send(ret)
+
+
     if data == "GetList":
         print "send playlist to client"
         ret = execCommand("--next")
