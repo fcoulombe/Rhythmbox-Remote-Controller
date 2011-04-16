@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 # sigslot.py
+#test
 
 import sys
 import socket
