@@ -7,7 +7,7 @@ import sys
 import socket
 from PyQt4 import QtGui, QtCore
 
-host = 'localhost' 
+host = '192.168.0.11' 
 port = 50000 
 size = 1024 
 
@@ -29,7 +29,7 @@ class RythmBoxClient(QtGui.QWidget):
         
         self.initUI()
 
-    def updateTrackName(self):
+    def updateTrackName(self, songPlaying):
         self.songPlaying.setText("currently playing: \n" + songPlaying)
 
     def next(self):
@@ -55,7 +55,7 @@ class RythmBoxClient(QtGui.QWidget):
 
     def initUI(self):
 
-	self.serverAddress = QTextInput(self)
+	#self.serverAddress = QTextInput(self)
         self.songPlaying = QtGui.QLabel(self)
         
         self.b1 = QtGui.QPushButton("Next", self)
@@ -67,9 +67,9 @@ class RythmBoxClient(QtGui.QWidget):
         self.vbox = QtGui.QVBoxLayout()
     
         self.vbox.addWidget(self.songPlaying)
-        self.vbox.addWidget(self.b2)
-        self.vbox.addWidget(self.b3)
         self.vbox.addWidget(self.b1)
+        self.vbox.addWidget(self.b3)
+        self.vbox.addWidget(self.b2)
 
         self.setLayout(self.vbox)
         self.connect(self.b1,  QtCore.SIGNAL('clicked()'), self.next)
